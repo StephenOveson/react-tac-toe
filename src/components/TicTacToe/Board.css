@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(145deg, #4da7db, #5bc6ff);
+}
+
+#board {
+    display: flex;
+    width: 552px;
+    flex-wrap: wrap;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #5bc6ff, #4da7db);
+    box-shadow:  30px 30px 60px #489dcf, 
+             -30px -30px 60px #62d5ff;
+}
+
+#game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.theButton {
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #5bc6ff, #4da7db);
+    box-shadow:  30px 30px 60px #489dcf, 
+             -30px -30px 60px #62d5ff;
+}
+
+.endgame .text{
+    display: none;
+    width: 200px;
+    top: 120px;
+    background-color: #333;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-size: 2em;
+}
+
+.square {
+    width: 184px;
+    height: 184px;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px
+}
+
+.square:hover {
+    cursor: pointer;
+}
+
+.square:nth-child(3n) {
+    border-right: 0px;
+}
+
+.square:nth-child(3n + 1) {
+    border-left: 0px;
+}
+
+.square:nth-child(1) {
+    border-top: 0px;
+}
+
+.square:nth-child(2) {
+    border-top: 0px;
+}
+
+.square:nth-child(3) {
+    border-top: 0px;
+}
+
+.square:nth-child(7) {
+    border-bottom: 0px;
+}
+
+.square:nth-child(8) {
+    border-bottom: 0px;
+}
+
+.square:nth-child(9) {
+    border-bottom: 0px;
+}
+
+@media screen and (max-width: 900px) {
+    #board {
+        width: 300px;
+    }
+    .square {
+        width: 100px;
+        height: 100px;
+    }
+}
