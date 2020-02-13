@@ -19,6 +19,7 @@ body {
     flex-wrap: wrap;
     border-radius: 100px;
     margin-top: 40px;
+    overflow: hidden;
     background: linear-gradient(145deg, #5bc6ff, #4da7db);
     box-shadow:  30px 30px 60px #489dcf, 
              -30px -30px 60px #62d5ff;
