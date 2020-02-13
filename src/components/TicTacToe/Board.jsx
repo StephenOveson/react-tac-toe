@@ -4,9 +4,15 @@ import './Board.css'
 const TicTacToe = () => {
     const [board, setBoard] = useState(Array.from(Array(9).keys()))
     const [gameEnded, setGameEnded] = useState(false)
+    const [wins, setWins] = useState(0)
+    const [loss, setLoss] = useState(0)
+    const [tie, setTie] = useState(0)
+    const [person, setPerson] = useState('X')
+    const [computer, setComputer] = useState('O')
+    const [gameStart, setGameStart] = useState(true)
 
-    const human = 'X'
-    const ai = 'O'
+    const human = person
+    const ai = computer
     const winCombos = [
         [0, 1, 2],
         [3, 4, 5],
@@ -20,13 +26,14 @@ const TicTacToe = () => {
     const cells = document.getElementsByClassName('square')
 
     const turnClick = (square) => {
-        if(gameEnded) return
+        if (gameStart) {
+            setGameStart(false)
+        }
+        if (gameEnded) return
         if (typeof board[square.target.id] == 'number') {
             turn(square.target.id, human)
             if (!checkTie()) {
-                setTimeout(function () {
-                    turn(bestSpot(), ai)
-                }, 500)
+                turn(bestSpot(), ai)
             }
         }
     }
@@ -55,6 +62,7 @@ const TicTacToe = () => {
         for (let index of winCombos[gameWon.index]) {
             document.getElementById(index).style.backgroundColor =
                 gameWon.player === human ? "blue" : "red";
+            gameWon.player === human ? setWins(wins + 1) : setLoss(loss + 1);
         }
         setGameEnded(true)
         declareWinner(gameWon.player === human ? "You Win" : "You Lose")
@@ -79,6 +87,7 @@ const TicTacToe = () => {
                 cells[i].style.backgroundColor = 'green';
             }
             setGameEnded(true)
+            setTie(tie + 1)
             declareWinner('Tie Game!')
             return true;
         }
@@ -139,6 +148,7 @@ const TicTacToe = () => {
     const replay = () => {
         setBoard(Array.from(Array(9).keys()))
         setGameEnded(false)
+        setGameStart(true)
         for (let i = 0; i < cells.length; i++) {
             cells[i].innerText = '';
             cells[i].style.removeProperty('background-color');
@@ -147,8 +157,26 @@ const TicTacToe = () => {
         document.querySelector('.endgame .text').innerText = '';
     }
 
+    const pickX = () => {
+        if (gameStart) {
+            setPerson('X')
+            setComputer('O')
+        }
+    }
+    const pickO = () => {
+        if (gameStart) {
+            setPerson('O')
+            setComputer('X')
+        }
+    }
+
     return (
         <div id="game">
+            <h3 className="score">Wins: {wins} Ties: {tie} Losses: {loss}</h3>
+            <div>
+                <button type="button" className="theButton" onClick={pickX}>Choose X</button>
+                <button type="button" className="theButton" onClick={pickO}>Choose O</button>
+            </div>
             <div id="board" onClick={(e) => turnClick(e)}>
                 <div className="square" id="0"></div>
                 <div className="square" id="1"></div>
@@ -162,7 +190,7 @@ const TicTacToe = () => {
             </div>
             <div className="endgame">
                 <div className="text"></div>
-                <button type="button" onClick={replay} className="theButton">Replay</button>
+                <button onClick={replay} className="theButton">Replay</button>
             </div>
         </div>
     )

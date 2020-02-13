@@ -4,8 +4,12 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    height: 100vh;
+    min-height: 100%;
     background: linear-gradient(145deg, #4da7db, #5bc6ff);
 }
 
@@ -13,7 +17,8 @@ body {
     display: flex;
     width: 552px;
     flex-wrap: wrap;
-    border-radius: 50px;
+    border-radius: 100px;
+    margin-top: 40px;
     background: linear-gradient(145deg, #5bc6ff, #4da7db);
     box-shadow:  30px 30px 60px #489dcf, 
              -30px -30px 60px #62d5ff;
@@ -32,10 +37,10 @@ body {
 }
 
 .theButton {
-    margin-top: 20px;
     height: 50px;
     width: 100px;
     border-radius: 50px;
+    margin: 10px 40px;
     background: linear-gradient(145deg, #5bc6ff, #4da7db);
     box-shadow:  30px 30px 60px #489dcf, 
              -30px -30px 60px #62d5ff;
