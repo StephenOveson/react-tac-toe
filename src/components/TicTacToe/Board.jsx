@@ -69,8 +69,8 @@ const TicTacToe = () => {
     }
 
     const declareWinner = (who) => {
-        document.querySelector('.endgame .text').style.display = 'block';
-        document.querySelector('.endgame .text').innerText = who;
+        document.querySelector('.text').style.display = 'block';
+        document.querySelector('.text').innerText = who;
     }
 
     const emptySquares = () => {
@@ -153,8 +153,8 @@ const TicTacToe = () => {
             cells[i].innerText = '';
             cells[i].style.removeProperty('background-color');
         }
-        document.querySelector('.endgame .text').style.display = 'none';
-        document.querySelector('.endgame .text').innerText = '';
+        document.querySelector('.text').style.display = 'none';
+        document.querySelector('.text').innerText = '';
     }
 
     const pickX = () => {
@@ -187,9 +187,9 @@ const TicTacToe = () => {
                 <div className="square" id="6"></div>
                 <div className="square" id="7"></div>
                 <div className="square" id="8"></div>
+                <div className="text"></div>
             </div>
             <div className="endgame">
-                <div className="text"></div>
                 <button onClick={replay} className="theButton">Replay</button>
             </div>
         </div>

@@ -47,10 +47,11 @@ body {
              -30px -30px 60px #62d5ff;
 }
 
-.endgame .text{
+.text{
+    position: absolute;
     display: none;
     width: 200px;
-    top: 120px;
+    bottom: 120px;
     background-color: #333;
     position: absolute;
     left: 50%;
